@@ -13,7 +13,16 @@ export const GifsApp = () => {
   };
 
   const handleSearch = (query: string) => {
-    console.log({ query });
+    const newQuery = query.trim().toLowerCase();
+    const currentTerms = previousTerms.slice(0, 7);
+
+    if (newQuery.length === 0) return;
+
+    if (previousTerms.includes(newQuery)) return;
+
+    currentTerms.unshift(newQuery);
+
+    setPreviousTerms(currentTerms);
   };
 
   return (
