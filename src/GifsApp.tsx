@@ -1,13 +1,15 @@
 import { useState } from 'react';
+
 import { CustomHeader } from './components/CustomHeader';
 import { GifList } from './components/GifList';
 import { PreviousSearches } from './components/PreviousSearches';
 import { SearchBar } from './components/SearchBar';
-import { mockGifs } from './mock-data/gifs.mock';
 import { getGifsByQuery } from './actions/get-gifs-by-query.action';
+import type { Gif } from './interfaces/gif.interface';
 
 export const GifsApp = () => {
-  const [previousTerms, setPreviousTerms] = useState(['Golden sun']);
+  const [previousTerms, setPreviousTerms] = useState<string[]>([]);
+  const [gifList, setGifList] = useState<Gif[]>([]);
 
   const handleTermClicked = (term: string) => {
     console.log(term);
@@ -27,7 +29,7 @@ export const GifsApp = () => {
 
     const gifs = await getGifsByQuery(query);
 
-    console.log({ gifs });
+    setGifList(gifs);
   };
 
   return (
@@ -44,7 +46,7 @@ export const GifsApp = () => {
         onLabelClicked={handleTermClicked}
       />
 
-      <GifList gifs={mockGifs} />
+      <GifList gifs={gifList} />
     </>
   );
 };
