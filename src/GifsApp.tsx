@@ -4,6 +4,7 @@ import { GifList } from './components/GifList';
 import { PreviousSearches } from './components/PreviousSearches';
 import { SearchBar } from './components/SearchBar';
 import { mockGifs } from './mock-data/gifs.mock';
+import { getGifsByQuery } from './actions/get-gifs-by-query.action';
 
 export const GifsApp = () => {
   const [previousTerms, setPreviousTerms] = useState(['Golden sun']);
@@ -12,7 +13,7 @@ export const GifsApp = () => {
     console.log(term);
   };
 
-  const handleSearch = (query: string) => {
+  const handleSearch = async (query: string) => {
     const newQuery = query.trim().toLowerCase();
     const currentTerms = previousTerms.slice(0, 7);
 
@@ -23,6 +24,10 @@ export const GifsApp = () => {
     currentTerms.unshift(newQuery);
 
     setPreviousTerms(currentTerms);
+
+    const gifs = await getGifsByQuery(query);
+
+    console.log({ gifs });
   };
 
   return (
