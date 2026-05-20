@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-import { CustomHeader } from './components/CustomHeader';
-import { GifList } from './components/GifList';
-import { PreviousSearches } from './components/PreviousSearches';
-import { SearchBar } from './components/SearchBar';
-import { getGifsByQuery } from './actions/get-gifs-by-query.action';
-import type { Gif } from './interfaces/gif.interface';
+import { CustomHeader } from './shared/components/CustomHeader';
+import { GifList } from './gifs/components/GifList';
+import { PreviousSearches } from './shared/components/PreviousSearches';
+import { SearchBar } from './shared/components/SearchBar';
+import { getGifsByQuery } from './gifs/actions/get-gifs-by-query.action';
+import type { Gif } from './gifs/interfaces/gif.interface';
 
 export const GifsApp = () => {
   const [previousTerms, setPreviousTerms] = useState<string[]>([]);
