@@ -11,8 +11,8 @@ export const useGifs = () => {
   const gifCache = useRef<Record<string, Gif[]>>({});
 
   const handleTermClicked = async (term: string) => {
-    if (gifCache[term]) {
-      setGifList(gifCache[term]);
+    if (gifCache.current[term]) {
+      setGifList(gifCache.current[term]);
       return;
     }
 
@@ -33,7 +33,7 @@ export const useGifs = () => {
 
     setGifList(gifs);
 
-    gifCache[newQuery] = gifs;
+    gifCache.current[newQuery] = gifs;
   };
 
   return {
