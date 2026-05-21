@@ -1,8 +1,8 @@
 import { describe, expect, test, vi } from 'vitest';
 import { act, renderHook } from '@testing-library/react';
 
-import { useGifs } from '../../src/gifs/hooks/useGifs';
-import * as gifActions from '../../src/gifs/actions/get-gifs-by-query.action';
+import { useGifs } from '@/gifs/hooks/useGifs';
+import * as gifActions from '@/gifs/actions/get-gifs-by-query.action';
 
 describe('useGifs', () => {
   test('should return default values and methods', () => {

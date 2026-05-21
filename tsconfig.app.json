@@ -23,7 +23,8 @@
 
     // Paths    
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@mocks/*": ["./test/mocks/*"],
     }
   },
   "include": ["src", "test"]

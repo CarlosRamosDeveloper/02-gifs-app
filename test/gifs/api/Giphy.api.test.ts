@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 
-import { giphyApi } from '../../../src/gifs/api/Giphy.api'
+import { giphyApi } from '@/gifs/api/Giphy.api'
 
 describe('GiphyApi', () => {
   test('should be configured correctly', () => {

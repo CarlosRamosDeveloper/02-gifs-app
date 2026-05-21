@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
-import { CustomHeader } from '../../../src/shared/components/CustomHeader';
+import { CustomHeader } from '@/shared/components/CustomHeader';
 
 describe('CustomHeader', () => {
   test('should render the title correctly', () => {

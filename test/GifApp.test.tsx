@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 import { render } from '@testing-library/react';
 
-import { GifsApp } from '../src/GifsApp';
+import { GifsApp } from '@/GifsApp';
 
 describe('GifApp - 02', () => {
   test('should render component properly', () => {
