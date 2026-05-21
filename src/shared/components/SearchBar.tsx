@@ -5,7 +5,7 @@ interface Props {
   onSearchFunction: (query: string) => void;
 }
 
-const timeToResetInMills = 700;
+const timeToResetInMills = 600;
 
 export const SearchBar = ({
   placeholder = 'Buscar',
