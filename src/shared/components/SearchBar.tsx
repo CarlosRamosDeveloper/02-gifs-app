@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface Props {
   placeholder?: string;
   onSearchFunction: (query: string) => void;
 }
 
-//const timeToResetInMills = 1000;
+const timeToResetInMills = 700;
 
 export const SearchBar = ({
   placeholder = 'Buscar',
@@ -13,16 +13,13 @@ export const SearchBar = ({
 }: Props) => {
   const [query, setQuery] = useState('');
 
-  /*
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       onSearchFunction(query);
     }, timeToResetInMills);
-    return () => {
-      clearTimeout(timeoutId);
-    };
+    return () => clearTimeout(timeoutId);
   }, [query, onSearchFunction]);
-  */
+
   const handleSearch = () => {
     onSearchFunction(query);
     setQuery('');
