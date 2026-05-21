@@ -1,19 +1,26 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from 'vitest';
 
-import { getGifsByQuery } from "../../../src/gifs/actions/get-gifs-by-query.action"
+import AxiosMockAdapter from 'axios-mock-adapter';
 
-describe("Get gifs by query", () => {
-    test("should return a list of gifs", async () => {
-        const gifs = await getGifsByQuery("Golden sun")
-        const [testSubject] = gifs
+import { getGifsByQuery } from '../../../src/gifs/actions/get-gifs-by-query.action';
+import { giphyApi } from '../../../src/gifs/api/Giphy.api';
+import { giphyResponseDataMock } from '../../mocks/giphy.response.data';
 
-        expect(testSubject).toStrictEqual({
-            id: expect.any(String),
-            height: expect.any(Number),
-            width: expect.any(Number),
-            title: expect.any(String),
-            url: expect.any(String)
-        })      
-        expect(gifs.length).toBe(5)
-    })
-})
+describe('Get gifs by query', () => {
+  const mock = new AxiosMockAdapter(giphyApi);
+
+  test('should return a list of gifs', async () => {
+    mock.onGet('/search').reply(200, giphyResponseDataMock);
+    const gifs = await getGifsByQuery('Golden sun');
+
+    expect(gifs.length).toBe(10);
+
+    gifs.forEach((gif) => {
+      expect(typeof gif.id).toBe('string');
+      expect(typeof gif.title).toBe('string');
+      expect(typeof gif.url).toBe('string');
+      expect(typeof gif.height).toBe('number');
+      expect(typeof gif.width).toBe('number');
+    });
+  });
+});
